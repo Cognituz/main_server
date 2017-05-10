@@ -1,0 +1,43 @@
+user www-data;
+worker_processes 1;
+error_log /var/log/nginx/error.log warn;
+pid /var/run/nginx.pid;
+
+events {
+  worker_connections 1025;
+}
+
+http {
+  ## Basic Settings
+  sendfile on;
+  tcp_nopush on;
+  tcp_nodelay on;
+  keepalive_timeout 65;
+  types_hash_max_size 2048;
+  client_body_temp_path /tmp;
+
+  include /etc/nginx/mime.types;
+  default_type application/octet-stream;
+
+  ## SSL Settings
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_prefer_server_ciphers on;
+
+  ## Logging Settings
+  access_log /var/log/nginx/access.log;
+  error_log /var/log/nginx/error.log;
+
+  ## Gzip Settings
+  gzip on;
+  gzip_disable "msie6";
+  gzip_vary on;
+  gzip_proxied any;
+
+  gzip_comp_level 9;
+  gzip_buffers 16 8k;
+  gzip_http_version 1.1;
+  gzip_types text/plain text/css application/json application/x-javascript application/javascript text/xml application/xml application/xml+rss text/javascript image/png image/svg+xml;
+
+  ## Include virtual hosts config
+  include /etc/nginx/sites-enabled/*;
+}

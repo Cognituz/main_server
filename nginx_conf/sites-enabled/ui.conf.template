@@ -1,0 +1,13 @@
+# Redirect to non-www
+server {
+  server_name ${UI_DOMAIN};
+  listen 80;
+  listen [::]:80;
+  error_page 500 502 503 504 /500.html;
+  root ${UI_ASSETS_DIR};
+
+  location / {
+    autoindex on;
+    try_files $uri /index.html;
+  }
+}
