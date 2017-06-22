@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+  main_server:
+    image: cognituz/main_server
+    ports: ["80:80"]
+    volumes:
+      - ui_assets:/static_assets/ui
+      - api_assets:/static_assets/api
+      - socks:/tmp/socks
+    environment:
+      API_SOCK_PATH: /tmp/socks/api.sock
+      API_ASSETS_DIR: /static_assets/api
+      UI_ASSETS_DIR: /static_assets/ui
+
+  api:
+    image: cognituz/api
+    env_file: ./default/rails.env
+    volumes:
+      - api_assets:/source/public
+      - socks:/tmp/socks
+
+  worker:
+    image: cognituz/api
+    command: ./scripts/run_sidekiq.sh
+    env_file: ./default/rails.env
+    volumes:
+      - api_assets:/source/public
+
+  ui:
+    image: cognituz/front:master
+    volumes:
+      - ui_assets:/source/public
+
+  postgres:
+    image: postgres:9.6
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+  api_assets:
+  ui_assets:
+  socks:

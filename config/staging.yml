@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  main_server:
+    environment:
+      UI_DOMAIN: staging.cognituz.com
+      API_DOMAIN: api.staging.cognituz.com
+
+  api:
+    env_file:
+      - ./default/rails.env
+      - ./staging/rails.env
+      - ./staging/api.env
+
+  worker:
+    env_file:
+      - ./default/rails.env
+      - ./staging/rails.env
+
+  ui:
+    environment:
+      API_URL: http://api.staging.cognituz.com
