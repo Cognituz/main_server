@@ -2,7 +2,7 @@ version: '2'
 
 services:
   main_server:
-    image: cognituz/main_server
+    image: cognituz/main_server:development
     ports: ["80:80"]
     volumes:
       - ui_assets:/static_assets/ui
