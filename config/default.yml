@@ -14,21 +14,21 @@ services:
       UI_ASSETS_DIR: /static_assets/ui
 
   api:
-    image: cognituz/api
+    image: cognituz/api:development
     env_file: ./default/rails.env
     volumes:
       - api_assets:/source/public
       - socks:/tmp/socks
 
   worker:
-    image: cognituz/api
+    image: cognituz/api:development
     command: ./scripts/run_sidekiq.sh
     env_file: ./default/rails.env
     volumes:
       - api_assets:/source/public
 
   ui:
-    image: cognituz/front:master
+    image: cognituz/front:development
     volumes:
       - ui_assets:/source/public
 
