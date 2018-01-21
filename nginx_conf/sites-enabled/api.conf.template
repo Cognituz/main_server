@@ -18,6 +18,8 @@ server {
   root ${API_ASSETS_DIR};
   try_files $uri $uri/index.html $uri.html @app;
 
+  include '/etc/nginx/snippets/https.conf';
+
   location @app {
     proxy_redirect off;
     proxy_set_header Host $http_host;
