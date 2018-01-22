@@ -3,6 +3,9 @@ server {
   server_name ${UI_DOMAIN}  www.${UI_DOMAIN};
   root ${UI_ASSETS_DIR};
 
+  listen 80;
+  listen [::]:80;
+
   location / {
     return 301 https://${UI_DOMAIN}$request_uri;
   }

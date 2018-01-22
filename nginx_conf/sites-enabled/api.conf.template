@@ -4,19 +4,21 @@ upstream api_upstream {
 
 server {
   server_name www.${API_DOMAIN};
+  listen 80;
+  listen [::]:80;
   return 301 https://${API_DOMAIN};
 }
 
 server {
   include '/etc/nginx/snippets/https.conf';
 
-  server_name ${API_DOMAIN};
+  try_files $uri $uri/index.html $uri.html @app;
   error_page 500 502 503 504 /500.html;
   client_max_body_size 4G;
   keepalive_timeout 10;
 
+  server_name ${API_DOMAIN};
   root ${API_ASSETS_DIR};
-  try_files $uri $uri/index.html $uri.html @app;
 
   location @app {
     proxy_redirect off;
