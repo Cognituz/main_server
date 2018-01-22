@@ -19,10 +19,6 @@ http {
   include /etc/nginx/mime.types;
   default_type application/octet-stream;
 
-  ## SSL Settings
-  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-  ssl_prefer_server_ciphers on;
-
   ## Logging Settings
   access_log /var/log/nginx/access.log;
   error_log /var/log/nginx/error.log;
