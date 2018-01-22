@@ -8,17 +8,15 @@ server {
 }
 
 server {
+  include '/etc/nginx/snippets/https.conf';
+
   server_name ${API_DOMAIN};
-  listen 80;
-  listen [::]:80;
   error_page 500 502 503 504 /500.html;
   client_max_body_size 4G;
   keepalive_timeout 10;
 
   root ${API_ASSETS_DIR};
   try_files $uri $uri/index.html $uri.html @app;
-
-  include '/etc/nginx/snippets/https.conf';
 
   location @app {
     proxy_redirect off;
