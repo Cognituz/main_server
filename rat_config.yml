@@ -1,9 +1,9 @@
-project_name: cognituz
+project_name: default
 
 environments:
   staging:
     machine:
-      host:    tcp://107.170.36.78:2376
+      host:    tcp://192.168.99.100:2376
       ca_cert: certs/ca.pem
       cert:    certs/cert.pem
       key:     certs/key.pem
