@@ -1,8 +1,8 @@
 listen 443 ssl http2;
 listen [::]:443 ssl http2;
 
-ssl_certificate '/etc/nginx/certs/cognituz.pem';
-ssl_certificate_key '/etc/nginx/certs/cognituz-key.pem';
+ssl_certificate '/tmp/nginx_conf/certs/cognituz.pem';
+ssl_certificate_key '/tmp/nginx_conf/certs/cognituz-key.pem';
 
 # from https://cipherli.st/
 # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
