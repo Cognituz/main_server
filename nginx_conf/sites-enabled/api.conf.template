@@ -6,13 +6,6 @@ server {
   server_name www.${API_DOMAIN};
   listen 80;
   listen [::]:80;
-  location ~ /.well-known {
-    allow all;
-  }
-
-  location / {
-   try_files $uri $uri/ =404;
-  }
   return 301 https://${API_DOMAIN};
 }
 
