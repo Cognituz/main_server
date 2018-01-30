@@ -1,8 +1,8 @@
 listen 443 ssl http2;
 listen [::]:443 ssl http2;
 
-ssl_certificate '/tmp/nginx_conf/certs/cognituz.pem';
-ssl_certificate_key '/tmp/nginx_conf/certs/cognituz-key.pem';
+ssl_certificate '/etc/nginx/certs/cognituz.pem';
+ssl_certificate_key '/etc/nginx/certs/cognituz-key.pem';
 
 # from https://cipherli.st/
 # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
@@ -14,6 +14,7 @@ ssl_session_cache shared:SSL:10m;
 ssl_session_tickets off;
 ssl_stapling on;
 ssl_stapling_verify on;
+ssl_trusted_certificate '/etc/nginx/certs/cognituz-ca.pem';
 resolver 8.8.8.8 8.8.4.4 valid=300s;
 resolver_timeout 5s;
 # Disable preloading HSTS for now.  You can use the commented out header line that includes
