@@ -1,4 +1,4 @@
-project_name: default
+project_name: cognituz
 
 environments:
   staging:
