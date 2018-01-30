@@ -3,7 +3,7 @@ project_name: default
 environments:
   staging:
     machine:
-      host:    tcp://192.168.99.100:2376
+      host:    tcp://159.89.149.191:2376
       ca_cert: certs/ca.pem
       cert:    certs/cert.pem
       key:     certs/key.pem
