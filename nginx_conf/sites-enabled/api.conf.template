@@ -10,10 +10,11 @@ server {
 }
 
 server {
+  server_name ${API_DOMAIN};
+  
   include '/etc/nginx/snippets/https.conf';
   include '/etc/nginx/snippets/rails_app.conf';
 
-  server_name ${API_DOMAIN};
   root ${API_ASSETS_DIR};
 
   location @app {
