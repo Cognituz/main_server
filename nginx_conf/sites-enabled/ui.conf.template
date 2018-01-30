@@ -11,10 +11,6 @@ server {
   }
 
   location / {
-   try_files $uri $uri/ =404;
-  }
-
-  location / {
     return 301 https://${UI_DOMAIN}$request_uri;
   }
 }
