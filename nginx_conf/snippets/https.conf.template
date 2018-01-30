@@ -6,8 +6,8 @@ ssl_certificate_key '/etc/nginx/certs/cognituz-key.key';
 
 # from https://cipherli.st/
 # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-ssl_stapling on;
-ssl_stapling_verify on;
+# ssl_stapling on;
+# ssl_stapling_verify on;
 # ssl_trusted_certificate '/etc/nginx/certs/cognituz-ca.crt';
 resolver 8.8.8.8 8.8.4.4 valid=300s;
 resolver_timeout 5s;
