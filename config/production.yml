@@ -21,3 +21,11 @@ services:
     environment:
       API_URL: https://api.cognituz.com
       FACEBOOK_ID: 2029830080570381
+
+  certbot:
+    environment:
+      DOMAINS: >
+        admin.cognituz.com,
+        api.cognituz.com,
+        www.cognituz.com,
+        cognituz.com

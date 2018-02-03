@@ -4,7 +4,12 @@ services:
   main_server:
     image: cognituz/main_server:development
     ports: ["80:80", "443:443"]
+    depends_on: [api, certbot]
     volumes:
+      - nginx_socks:/tmp/socks
+      - acme_challenge:/var/www/acme_challenge
+      - ssl_certs:/var/certs
+
       - ui_assets:/static_assets/ui
       - api_assets:/static_assets/api
       - socks:/tmp/socks
@@ -46,7 +51,33 @@ services:
     image: redis:latest
     restart: on-failure:3
 
+  admin:
+    image: cognituz/api:development
+    volumes:
+      - ui_assets:/static_assets/ui
+      - api_assets:/static_assets/api
+      - socks:/tmp/socks
+    depends_on: [postgres, redis]
+    env_file:
+      - ./default/rails.env
+      - ./default/admin.env
+
+  # Certbot renews SSL certificates periodically
+  certbot:
+    image: yavende/certbot:v1.0.0
+    environment:
+      - WEBROOT_PATH=/var/www/acme_challenge
+      - SIGNING_EMAIL=info@cognituz.com
+      - CERTS_PATH=/var/certs
+    volumes:
+      - acme_challenge:/var/www/acme_challenge
+      - ssl_certs:/var/certs
+      - certbot_data:/etc/letsencrypt
+
 volumes:
+  acme_challenge:
+  certbot_data:
+  ssl_certs:
   postgres_data:
   api_assets:
   ui_assets:

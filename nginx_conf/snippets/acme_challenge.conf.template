@@ -1,0 +1,16 @@
+listen 80;
+listen [::]:80;
+
+# Stuff for ACME challenge
+location ~ /.well-known {
+  allow all;
+}
+
+location ^~ /.well-known/acme-challenge/ {
+  root ${ACME_CHALLENGE_DIR};
+  default_type "text/plain";
+}
+
+location = /\.well-known/acme-challenge/ {
+  return 404;
+}
