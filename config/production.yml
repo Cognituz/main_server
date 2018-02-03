@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  main_server:
+    environment:
+      UI_DOMAIN: cognituz.com
+      API_DOMAIN: api.cognituz.com
+
+  api:
+    env_file:
+      - ./default/rails.env
+      - ./production/rails.env
+      - ./production/api.env
+
+  worker:
+    env_file:
+      - ./default/rails.env
+      - ./production/rails.env
+
+  ui:
+    environment:
+      API_URL: https://api.cognituz.com
+      FACEBOOK_ID: 2029830080570381

@@ -7,3 +7,10 @@ environments:
       ca_cert: certs/ca.pem
       cert:    certs/cert.pem
       key:     certs/key.pem
+
+  production:
+    machine:
+      host:    tcp://159.89.149.191:2376
+      ca_cert: certs/ca.pem
+      cert:    certs/cert.pem
+      key:     certs/key.pem
