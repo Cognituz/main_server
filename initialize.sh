@@ -13,7 +13,9 @@ for f in $(find /tmp/nginx_conf | grep "\.template$"); do
       \$API_SOCK_PATH  \
       \$UI_DOMAIN      \
       \$UI_ASSETS_DIR  \
-      \$ACME_CHALLENGE_DIR  \
+      \$ACME_CHALLENGE_DIR \
+      \$SSL_CERT \
+      \$SSL_KEY \
     ' \
     > ${f%.template}
 
