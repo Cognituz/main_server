@@ -4,7 +4,7 @@ services:
   main_server:
     environment:
       UI_DOMAIN: staging.cognituz.com
-      API_DOMAIN: api.staging.cognituz.com
+      API_DOMAIN: staging.api.cognituz.com
 
   api:
     env_file:
@@ -19,4 +19,4 @@ services:
 
   ui:
     environment:
-      API_URL: http://api.staging.cognituz.com
+      API_URL: https://staging.api.cognituz.com
