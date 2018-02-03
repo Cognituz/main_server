@@ -51,17 +51,6 @@ services:
     image: redis:latest
     restart: on-failure:3
 
-  admin:
-    image: cognituz/api:development
-    volumes:
-      - ui_assets:/static_assets/ui
-      - api_assets:/static_assets/api
-      - socks:/tmp/socks
-    depends_on: [postgres, redis]
-    env_file:
-      - ./default/rails.env
-      - ./default/admin.env
-
   # Certbot renews SSL certificates periodically
   certbot:
     image: yavende/certbot:v1.0.0

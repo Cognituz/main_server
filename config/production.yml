@@ -25,7 +25,6 @@ services:
   certbot:
     environment:
       DOMAINS: >
-        admin.cognituz.com,
         api.cognituz.com,
         www.cognituz.com,
         cognituz.com
