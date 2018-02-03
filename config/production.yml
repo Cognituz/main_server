@@ -24,6 +24,8 @@ services:
 
   certbot:
     environment:
+      SSL_CERT: /var/certs/api.cognituz.com/fullchain.pem
+      SSL_key: /var/certs/api.cognituz.com/privkey.pem
       DOMAINS: >
         api.cognituz.com,
         www.cognituz.com,
