@@ -4,7 +4,7 @@ server {
   root ${UI_ASSETS_DIR};
 
   include '/etc/nginx/snippets/acme_challenge.conf';
-  
+
   location / {
     return 301 https://${UI_DOMAIN}$request_uri;
   }
@@ -22,4 +22,8 @@ server {
   root ${UI_ASSETS_DIR};
 
   include '/etc/nginx/snippets/https.conf';
+
+  location / {
+    try_files $uri /index.html;
+  }
 }

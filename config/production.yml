@@ -3,6 +3,8 @@ version: '2'
 services:
   main_server:
     environment:
+      SSL_CERT: /var/certs/api.cognituz.com/fullchain.pem
+      SSL_KEY: /var/certs/api.cognituz.com/privkey.pem
       UI_DOMAIN: cognituz.com
       API_DOMAIN: api.cognituz.com
 
@@ -24,8 +26,6 @@ services:
 
   certbot:
     environment:
-      SSL_CERT: /var/certs/api.cognituz.com/fullchain.pem
-      SSL_key: /var/certs/api.cognituz.com/privkey.pem
       DOMAINS: >
         api.cognituz.com,
         www.cognituz.com,
